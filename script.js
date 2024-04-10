@@ -76,6 +76,7 @@ function countDown() {
     n1.textContent = counter;
     gsap.to("#node00, #node01", 0.18, {
       y: "-=200",
+      ease: Power3.easeInOut,
       onComplete: swapNodes
     });
   }
