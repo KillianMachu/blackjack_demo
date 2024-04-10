@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack Demo</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="container">
-        <div id="disclaimer">
-            <h1>Bienvenue sur la démonstration du Blackjack</h1>
-            <div class="warning"><span class="danger">⚠️</span><h2>Attention</h2><span class="danger">⚠️</span></div>
-        </div>
-
-        <!-- counter -->
-        <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 27.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Vectorportal.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" viewBox="0 0 571.8 508.2" style="enable-background:new 0 0 571.8 508.2;" xml:space="preserve">
@@ -64,27 +45,27 @@
 	</clipPath>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="355.2" y="323.4" class="st10" width="68" height="128.8"/>
-		<text  id="node21" transform="translate(363.5708 493.3301)" class="st11 st12">1</text>
+		<text transform="translate(363.5708 493.3301)" class="st11 st12 node20">1</text>
 	</g>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="355.2" y="193.4" class="st10" width="68" height="128.8"/>
-		<text  id="node20" transform="translate(363.5708 293.3301)" class="st11 st12">2</text>
+		<text transform="translate(363.5708 293.3301)" class="st11 st12 node20">2</text>
 	</g>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="250.8" y="323.4" class="st10" width="68" height="128.8"/>
-		<text  id="node11" transform="translate(259.2007 493.3301)" class="st11 st12">3</text>
+		<text transform="translate(259.2007 493.3301)" class="st11 st12 node11">3</text>
 	</g>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="250.8" y="193.4" class="st10" width="68" height="128.8"/>
-		<text  id="node10" transform="translate(259.2007 293.3301)" class="st11 st12">4</text>
+		<text transform="translate(259.2007 293.3301)" class="st11 st12 node10">4</text>
 	</g>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="146.4" y="323.4" class="st10" width="68" height="128.8"/>
-		<text  id="node01" transform="translate(154.8208 493.3301)" class="st11 st12">5</text>
+		<text transform="translate(154.8208 493.3301)" class="st11 st12 node01">5</text>
 	</g>
 	<g style="clip-path:url(#XMLID_00000058587103482748922770000009106224446932662966_);">
 		<rect x="146.4" y="193.4" class="st10" width="68" height="128.8"/>
-		<text  id="node00" transform="translate(154.8208 293.3301)" class="st11 st12">6</text>
+		<text transform="translate(154.8208 293.3301)" class="st11 st12 node00">6</text>
 	</g>
 </g>
 <rect x="130.9" y="39.8" class="st3" width="314.9" height="78.4"/>
@@ -452,23 +433,3 @@
 	</g>
 </g>
 </svg>
-
-        <!-- <header>
-            <h1>Blackjack Demo</h1>
-        </header>
-        <section class="content">
-            <div class="cards">
-                <img src="SPADE-1.svg" alt="Card Back" class="card" id="card1">
-                <img src="SPADE-1.svg" alt="Card Back" class="card" id="card2">
-            </div>
-            <div class="info">
-                <p>Welcome to the Blackjack Demo! Scroll down to reveal your cards.</p>
-            </div>
-        </section> -->
-    </div>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-</body>
-
-</html>

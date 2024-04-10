@@ -67,27 +67,27 @@ tl.from("#disclaimer>*:not(.token)",{
 //counter
 console.clear();
 var counter = 0;
-var n0 = document.querySelector("#node0");
-var n1 = document.querySelector("#node1");
+var n0 = document.querySelector("#node00");
+var n1 = document.querySelector("#node01");
 
-function count() {
+function countDown() {
   if (counter < 10) {
     counter++;
-    n1.textContent = counter;
-    gsap.to("#node0, #node1", 0.9, {
-      y: "-=400",
-      delay: 0.25,
-      ease: Power3.easeInOut,
-      onComplete: swapNodes
-    });
   }
+  n1.textContent = counter;
+  gsap.to("#node00, #node01", 0.9, {
+    y: "-=200",
+    delay: 0.25,
+    ease: Power3.easeInOut,
+    onComplete: swapNodes
+  });
 }
 
 function swapNodes() {
   n0.textContent = counter;
-  gsap.set("#node0, #node1", { y: "+=400", onComplete: countDown });
+  gsap.set("#node0, #node1", { y: "+=200", onComplete: countDown });
 }
 
-count();
+countDown();
 
 });
