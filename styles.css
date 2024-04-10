@@ -1,0 +1,39 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+body, .container, .content, .cards{
+  height: 400vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  margin: 0 10px;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
+.info {
+  text-align: center;
+  margin-top: 20px;
+}
