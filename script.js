@@ -70,7 +70,7 @@ var counter = 0;
 var n0 = document.querySelector("#node0");
 var n1 = document.querySelector("#node1");
 
-function countDown() {
+function count() {
   if (counter < 10) {
     counter++;
     n1.textContent = counter;
@@ -88,6 +88,6 @@ function swapNodes() {
   gsap.set("#node0, #node1", { y: "+=400", onComplete: countDown });
 }
 
-countDown();
+count();
 
 });
