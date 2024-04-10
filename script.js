@@ -71,21 +71,19 @@ var n0 = document.querySelector("#node00");
 var n1 = document.querySelector("#node01");
 
 function countDown() {
-  if (counter < 10) {
+  if (counter < 7) {
     counter++;
+    n1.textContent = counter;
+    gsap.to("#node00, #node01", 0.18, {
+      y: "-=200",
+      onComplete: swapNodes
+    });
   }
-  n1.textContent = counter;
-  gsap.to("#node00, #node01", 0.9, {
-    y: "-=200",
-    delay: 0.25,
-    ease: Power3.easeInOut,
-    onComplete: swapNodes
-  });
 }
 
 function swapNodes() {
   n0.textContent = counter;
-  gsap.set("#node0, #node1", { y: "+=200", onComplete: countDown });
+  gsap.set("#node00, #node01", { y: "+=200", onComplete: countDown });
 }
 
 countDown();
