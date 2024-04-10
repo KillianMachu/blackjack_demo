@@ -1,14 +1,17 @@
 {
   "dependencies": {
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "sass": "^1.74.1"
   },
   "name": "black-jack-demo",
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "sass css/style.scss css/style.css --watch"
   },
   "author": "",
   "license": "ISC",
+  "keywords": [],
   "description": ""
 }

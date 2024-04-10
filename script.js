@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger)
   //start page
-  var warp = document.getElementById("disclaimer")
+  var warp = document.getElementById("machine")
 
-  var total = 30;
+  var total = 50;
   var w = window.innerWidth
   var h = window.innerHeight;
 
