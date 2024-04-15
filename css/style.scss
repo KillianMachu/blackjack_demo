@@ -6,31 +6,9 @@ body {
     font-family: "Poppins", sans-serif;
     overflow: hidden;
 
-    .container {
-        height: 100vh;
-        background-color: #252525;
 
-        #disclaimer {
-            width: 100%;
-            color: white;
-            text-align: center;
-            padding: 1em;
 
-            h1 {
-                margin: 0;
-                display: block;
-                position: relative;
-                z-index: 2;
-            }
 
-            .warning {
-                display: flex;
-                align-items: center;
-                width: fit-content;
-                margin: auto;
-                font-size: 1.5em;
-                position: relative;
-                z-index: 2;
 
                 * {
                     margin: 0 .5em;
@@ -64,12 +42,3 @@ body {
 
 }
 
-
-.token {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    background-size: 100% 100%;
-    z-index: 1;
-    top: 0;
-}
