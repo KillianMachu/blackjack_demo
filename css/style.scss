@@ -1,67 +1,700 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$background-color: #161616;
+$lightGreen: #1d6b3f;
+$darkGreen: #103320;
+$checkbox-size: 16px;
+$borderCheckbox: #ccc;
+$checkColor: #DDD;
+$checkFail: #ff6a6a;
+$windowColor: #333333;
+$yellow: #e9da54;
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     min-height: 100vh;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    overflow: hidden;
+
+    &.blockScroll {
+        overflow-y: hidden;
+
+        head {
+            pointer-events: none;
+        }
+    }
 
     .container {
-        height: 100vh;
-        background-color: #252525;
+        min-height: 100vh;
+        background-color: $background-color;
+
+        #machine {
+            position: fixed;
+            z-index: 2;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            top: 0;
+            background-color: $background-color;
+
+            svg {
+                position: relative;
+                z-index: 2;
+                height: 75%;
+                margin: auto;
+            }
+        }
 
         #disclaimer {
-            width: 100%;
-            color: white;
-            text-align: center;
-            padding: 1em;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
 
-            h1 {
-                margin: 0;
-                display: block;
-                position: relative;
-                z-index: 2;
+            .popup {
+                position: absolute;
+                width: 75%;
+                min-width: fit-content;
+                background-color: $windowColor;
+                padding: 1em;
+                border-radius: 1em;
+                color: white;
+                text-align: center;
+                padding: 1em;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                box-shadow: 0 0 0 8px white;
+                outline: dashed 8px red;
+                animation: 2s animateBorder infinite;
+                z-index: 10;
+
+                >div {
+                    display: flex;
+                    margin: auto;
+                    width: fit-content;
+                    align-items: center;
+                }
+
+                @keyframes animateBorder {
+                    0% {
+                        outline-color: red;
+                        box-shadow: 0 0 0 8px white;
+                    }
+
+                    50% {
+                        outline-color: white;
+                        box-shadow: 0 0 0 8px red;
+                    }
+
+                    100% {
+                        outline-color: red;
+                        box-shadow: 0 0 0 8px white;
+                    }
+                }
+
+                h1 {
+                    margin: 0;
+                    display: block;
+                    position: relative;
+                    z-index: 2;
+                    font-size: 1.5em;
+                }
+
+                .warning {
+                    display: flex;
+                    align-items: center;
+                    width: fit-content;
+                    margin: auto;
+                    font-size: 1.5em;
+                    position: relative;
+                    z-index: 2;
+
+                    * {
+                        margin: 0 .5em;
+                    }
+                }
+
+                h2 {
+                    font-size: 1em;
+                }
+
+                ul {
+                    list-style-type: none;
+                    color: $yellow;
+                    padding: 0;
+
+                    div {
+                        margin: 1em 0;
+                    }
+
+                    div:first-child {
+                        li:first-child {
+                            font-size: 2em;
+                        }
+                    }
+
+                    li {
+                        font-size: 1.3em;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    span {
+                        display: block;
+                        background-color: #fff;
+                        margin: auto;
+                        width: 40%;
+                        height: 2px;
+                    }
+                }
+
+                input {
+                    position: relative !important;
+                    appearance: none;
+                    margin: 8px;
+                    box-sizing: content-box;
+                    min-width: fit-content;
+                    overflow: hidden;
+                    cursor: pointer;
+
+                    // circle
+                    &:before {
+                        content: '';
+                        display: block;
+                        box-sizing: content-box;
+                        width: $checkbox-size;
+                        height: $checkbox-size;
+                        border: 2px solid $borderCheckbox;
+                        transition: 0.2s border-color ease;
+                        border-radius: calc($checkbox-size / 4);
+                    }
+
+                    &:checked:before {
+                        border-color: $checkColor;
+                        transition: 0.5s border-color ease;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        box-sizing: content-box;
+                        top: 50%;
+                        left: 50%;
+                        transform-origin: 50% 50%;
+                        background-color: transparent;
+                        width: $checkbox-size;
+                        width: calc($checkbox-size * 0.6);
+                        height: $checkbox-size;
+                        transform: translate(-50%, -85%) scale(0) rotate(45deg);
+                        border-radius: 0;
+                        box-shadow: 4px 4px 0px 0px $checkColor;
+                    }
+
+                    &:checked:after {
+                        animation: toggleOnCheckbox 0.2s ease forwards;
+                    }
+
+                    @keyframes toggleOnCheckbox {
+                        0% {
+                            opacity: 0;
+                            transform: translate(-50%, -85%) scale(0) rotate(45deg);
+                        }
+
+                        70% {
+                            opacity: 1;
+                            transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+                        }
+
+                        100% {
+                            transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+                        }
+                    }
+                }
+
+                .check {
+                    font-size: 1.2em;
+                }
+
+                &:has(.checkN) .check {
+                    color: $checkFail;
+
+                    input:before {
+                        border-color: $checkFail;
+                    }
+                }
+
+                button {
+                    margin: .5em;
+                    background-color: green;
+                    color: white;
+                    z-index: 11;
+                    border: none;
+                    font-size: 2em;
+                    padding: .5em 1em;
+                    border-radius: .5em;
+                    cursor: pointer;
+                }
             }
+        }
 
-            .warning {
+        .head {
+            min-height: 100vh;
+            margin: 0 10%;
+
+            header {
                 display: flex;
-                align-items: center;
-                width: fit-content;
-                margin: auto;
-                font-size: 1.5em;
-                position: relative;
-                z-index: 2;
+                height: 5em;
+                padding: 1em 0 1.5em 0;
+                border-bottom: 2px solid white;
 
-                * {
-                    margin: 0 .5em;
-                }
-            }
-        }
-
-        .loader{
-            height: 100%;
-            .machine{
-                position: relative;
-                z-index: 2;
-                height: 100%;
-    
-                svg{
+                div {
                     height: 100%;
+                    margin: 0 1em;
+
+                    img {
+                        height: 100%;
+                    }
+                }
+
+                nav {
+                    display: flex;
+                    width: fit-content;
+                    justify-content: space-between;
+                    margin-left: auto;
+
+                    span {
+                        display: flex;
+                        font-size: 1.5em;
+                        height: 100%;
+                        align-items: center;
+                        margin: 0 1em;
+
+                        a {
+                            margin: auto;
+                            text-decoration: none;
+                            color: $background-color;
+                            color: white;
+                            font-weight: bold;
+
+                            &.active,
+                            &:hover:not(.login) {
+                                color: red;
+                                border-bottom: 2px solid white;
+                            }
+
+                            &.login {
+                                padding: .3em 1em;
+                                border-radius: 10em;
+                                border: 3px solid red;
+
+                                &:hover {
+                                    background-color: red;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .burger {
+                    display: none;
+                    position: relative;
+                    padding: 0;
+                    width: 45px;
+                    height: 45px;
+                    border: none;
+                    background: transparent;
+                    cursor: pointer;
+                    z-index: 30;
+                    margin: auto 1em auto auto;
+
+                    .bar::before,
+                    .bar::after {
+                        content: "";
+                        width: 45px;
+                        height: 4px;
+                        position: absolute;
+                        left: 0;
+                        border-radius: 3px;
+                        transition: all .5s ease-in-out;
+                        background-color: white;
+                    }
+                    
+                    .bar {
+                        display: block;
+                        width: 45px;
+                        height: 4px;
+                        border-radius: 3px;
+                        transition: all .5s ease-in-out;
+                        margin-left: 0;
+                        background-color: white;
+                    }
+    
+                    .bar::before {
+                        transform: translateY(-12px);
+                    }
+    
+                    .bar::after {
+                        transform: translateY(12px);
+                    }
+                }
+
+                &.show-nav{
+                    nav{
+                        display: flex;
+                        flex-direction: column;
+                        background-color: #161616;
+                        right: 0;
+                        height: 100vh;
+                        z-index: 10;
+                    }
+
+                    .burger{
+
+                        .bar::before {
+                            transform: rotate(45deg);
+                        }
+        
+                        .bar::after {
+                            transform: rotate(-45deg);
+                        }
+        
+                        .bar {
+                            width: 0;
+                            margin-left: 50%;
+                        }
+                    }
+                }
+
+
+                @media screen and (max-width: 1150px) {
+                    .burger {
+                        display: block;
+                    }
+
+                    nav {
+                        display: none;
+                        position: absolute;
+                        justify-content: inherit;
+                        
+                        span{
+                            height: fit-content;
+
+                            &:first-child{
+                                margin-top: 3em;
+                            }
+
+                            a{
+                                margin: 1em auto;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .link {
+                color: white;
+                font-size: 1.1em;
+                display: flex;
+                margin: 1em;
+
+                span {
+                    padding: 0 .5em;
+                }
+
+                >a:not(:last-child) {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                >a:last-child {
+                    color: red;
+                    text-decoration: none;
+                }
+
+                >a:hover {
+                    text-decoration: underline;
+                    text-decoration-color: white;
+                }
+            }
+
+            >h1,
+            >h2 {
+                text-align: center;
+                margin: 0;
+            }
+
+            >h1 {
+                font-weight: bold;
+                font-size: 3em;
+                color: $yellow;
+            }
+
+            >h2 {
+                font-weight: 300;
+                font-size: 1.2em;
+                color: white;
+            }
+
+            .regles {
+                width: 90%;
+                margin: auto;
+                display: flex;
+                background-color: $windowColor;
+                border-radius: 1em;
+                padding: 1em;
+                color: white;
+                margin-top: 1em;
+                height: min-content;
+                position: relative;
+
+                >div {
+                    width: 50%;
+                    text-align: justify;
+
+                    &:first-child {
+                        height: fit-content;
+                    }
+
+                    h2 {
+
+                        color: $yellow;
+                    }
+
+                    div {
+                        p {
+                            margin: .5em 0;
+                        }
+                    }
+
+                    a {
+                        width: fit-content;
+                        display: flex;
+                        margin: 2em auto;
+                        background-color: green;
+                        color: white;
+                        font-size: 1.3em;
+                        padding: .5em 1em;
+                        border-radius: .5em;
+                        text-decoration: none;
+                    }
+                }
+
+                div:nth-child(2) {
+                    display: flex;
+
+                    img {
+                        margin: auto;
+                    }
+                }
+
+                >img {
+                    position: absolute;
+                    width: 5em;
+                }
+
+                .diamond {
+                    top: 0;
+                    right: 0;
+                    transform: translate(50%, -50%);
+                }
+
+                .chip50 {
+                    bottom: 0;
+                    left: 0;
+                    transform: translate(-50%, 50%);
+                }
+
+                @media screen and (max-width: 1150px) {
+                    div {
+                        width: 100%;
+                    }
+
+                    div:nth-child(2) {
+                        display: none;
+                    }
+                }
+            }
+
+            .icon {
+                margin: 1em auto;
+                vertical-align: top;
+                width: fit-content;
+                display: flex;
+            }
+
+            // Mouse icon
+            .mouse-icon {
+                position: relative;
+                width: fit-content;
+                margin: 1em auto;
+
+                .mouse {
+                    width: 27px;
+                    height: 42px;
+                    border: 3px solid #fff;
+                    border-radius: 20px;
+                    position: relative;
+                    margin-bottom: 3px;
+
+                    &:after {
+                        content: "";
+                        background: #fff;
+                        width: 6px;
+                        height: 9px;
+                        position: absolute;
+                        top: 5px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 20px;
+                        animation: scrollAnim 1.1s infinite;
+                    }
+                }
+
+                .arrow {
+                    width: 9px;
+                    height: 9px;
+                    display: block;
+                    border-bottom: 2px solid #fff;
+                    border-right: 2px solid #fff;
+                    transform: rotate(45deg);
+                    position: relative;
+                    margin: 0 auto;
+                    animation: arrowAnim 1.2s infinite;
+
+                    &.arrow-01 {
+                        animation-delay: .2s;
+                    }
+
+                    &.arrow-02 {
+                        animation-delay: .4s;
+                    }
+
+                    &.arrow-03 {
+                        animation-delay: .6s;
+                    }
+                }
+            }
+
+            // Mouse wheel animation
+            @keyframes scrollAnim {
+                from {
+                    top: 5px;
+                }
+
+                to {
+                    top: 25px;
+                    opacity: 0;
+                }
+            }
+
+            // Arrows animation
+            @keyframes arrowAnim {
+                0% {
+                    opacity: 0;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
                 }
             }
         }
 
+        // .cards{
+        //     min-height: 100vh;
+        //     background-color: #333333;
+            
+        // }
         
-        #demo {
+        // .card-click {
+        //     width: fit-content;
+        //     height: fit-content;
+        //     position: absolute;
+        //     transform-style: preserve-3d;
+        //     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        //     cursor: pointer;
+        //     left: 50%;
+        //     top: 50%;
+        //     transform: translate(-50%, -50%);
+        //     position: relative;
 
-            max-height: 82%;
-            max-width: 96%;
-            font-weight: 700;
-          }
+        //     &.flipped {
+        //         transform: translate(-50%, -50%) rotateY(180deg);
+        //     }
+
+        //     img {
+        //         backface-visibility: hidden;
+        //         display: flex;
+
+        //         &:first-child {
+        //             position: relative;
+        //         }
+
+        //         &:last-child {
+        //             position: absolute;
+        //             transform: rotateY(180deg);
+        //             top: 0;
+        //         }
+        //     }
+        // }
+
+        #game {
+            height: 100vh;
+            position: relative;
+
+            .fond{
+                height: 100vh;
+                width: 100vw;
+                background: $lightGreen;
+                /* For older browsers that may not support gradients */
+                background: -webkit-radial-gradient(center, ellipse cover, $lightGreen 0%, $darkGreen 100%);
+                background: radial-gradient($lightGreen, $darkGreen);
+                
+                .grainy {
+                    width: 100%;
+                    height: 100%;
+                    background: url("../img/grainy.png");
+                }
+            }
+
+            .player{
+                position: absolute;
+                transform: translate(-50%, -100%);
+                top: 90%;
+                left: 50%;
+                display: flex;
+                width: 100%;
+
+                >div{
+                    margin: 0 auto;
+                    width: 30%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                @media screen and (max-width: 1150px) {
+                    .card{
+                        width: 90%;
+                    }
+                }
+
+                .card{
+                    width: 30%;
+                }
+            }
+
+        }
     }
 
 }
-
 
 .token {
     width: 60px;
@@ -69,4 +702,5 @@ body {
     position: absolute;
     background-size: 100% 100%;
     z-index: 1;
+    top: 0;
 }
