@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     'img/chips/1000.svg'
   ];
 
-  function chipsFall(){
+  function chipsFall() {
     for (i = 0; i < total; i++) {
       var token = document.createElement('div');
       var randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)]
@@ -97,17 +97,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
   blink();
 
   function removeElement(element) {
-    if (typeof(element) === "string") {
+    if (typeof (element) === "string") {
       element = document.querySelector(element);
     }
-    return function() {
+    return function () {
       element.parentNode.removeChild(element);
     };
   }
 
   var tlDisclaimer = gsap.timeline({ paused: true });
 
-  var tlContent = gsap.timeline({ paused: true});
+  var tlContent = gsap.timeline({ paused: true });
 
   //disclaimer
   tlDisclaimer.from("#disclaimer>.popup", {
@@ -117,9 +117,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   })
     .addPause()
     .to("#disclaimer>.popup", { y: "+=50", duration: .15 })
-    .to("#disclaimer>.popup", { y: "-=1000"})
+    .to("#disclaimer>.popup", { y: "-=1000" })
     .call(removeElement("#disclaimer"))
-    .call(function(){tlContent.play()})
+    .call(function () { tlContent.play() })
 
   function loadPage() {
     document.querySelector("#machine").parentNode.removeChild(document.querySelector("#machine"));
@@ -128,126 +128,136 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   let tlDisclaimerN = gsap.timeline({ paused: true, repeat: 1 });
   tlDisclaimerN
-      .to("#disclaimer>.popup", 0.05, {x:-10 ,y: -5, ease: Power0.easeNone})
-      .to("#disclaimer>.popup", 0.05, {x:10 ,y: 5, ease: Power0.easeNone})
-      .to("#disclaimer>.popup", 0.05, {x:0 ,y: 0, ease: Power0.easeNone});
+    .to("#disclaimer>.popup", 0.05, { x: -10, y: -5, ease: Power0.easeNone })
+    .to("#disclaimer>.popup", 0.05, { x: 10, y: 5, ease: Power0.easeNone })
+    .to("#disclaimer>.popup", 0.05, { x: 0, y: 0, ease: Power0.easeNone });
 
   //remove disclaimer
   function removeDisclaimer() {
     if (document.getElementById('disclaimerCheck').checked) {
       tlDisclaimer.resume()
       document.body.classList.remove('blockScroll');
-  } else {
-    tlDisclaimerN.restart();
-    document.querySelector(".check").classList.add("checkN")
-  }
+    } else {
+      tlDisclaimerN.restart();
+      document.querySelector(".check").classList.add("checkN")
+    }
   }
 
   window.removeDisclaimer = removeDisclaimer
 
   // burger menu
 
-function toggleMenu() {
-  const header = document.querySelector('.head>header');
-  const burger = document.querySelector('.burger');
-  burger.addEventListener('click', () => {
-    header.classList.toggle('show-nav')
-  })
-}
-toggleMenu()
+  function toggleMenu() {
+    const header = document.querySelector('.head>header');
+    const burger = document.querySelector('.burger');
+    burger.addEventListener('click', () => {
+      header.classList.toggle('show-nav')
+    })
+  }
+  toggleMenu()
 
-// end burger menu
-  
+  // end burger menu
+
   // load content
 
 
   tlContent.from(".head>header", {
     y: -100,
     autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
+    ease: Power1.easeInOut, clearProps: 'all'
   })
-  .from(".head>span", {
-    y: -100,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  },0)
-  .from(".head>h1", {
+    .from(".head>span", {
+      y: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    }, 0)
+    .from(".head>h1", {
+      x: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    })
+    .from(".head>h2", {
+      x: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    })
+    .from(".regles", {
+      x: +100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    })
+    .from(".regles>.chip50", 1.5, {
+      right: 0,
+      rotateZ: 180 * 2,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    })
+    .from(".regles>.diamond", 1.5, {
+      left: 0,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    }, "-=1.5")
+    .from(".icon", {
+      y: 100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    })
+
+  gsap.from("#gameSection",{
+    scrollTrigger: {
+      trigger: "#gameSection",
+      start: "top 70%",
+    },
     x: -100,
     autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  })
-  .from(".head>h2", {
-    x: -100,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  })
-  .from(".regles", {
-    x: +100,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  })
-  .from(".regles>.chip50", 1.5,{
-    right:0,
-    rotateZ: 180*2,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  })
-  .from(".regles>.diamond", 1.5,{
-    left:0,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
-  },"-=1.5")
-  .from(".icon",{
-    y:100,
-    autoAlpha: 0,
-    ease: Power1.easeInOut,clearProps: 'all'
+    ease: Power1.easeInOut, clearProps: 'all'
   })
 
-  // gsap.from(".fond",{
-  //   x: -100,
-  //   autoAlpha: 0,
-  //   ease: Power1.easeInOut,clearProps: 'all',
-  //   scrollTrigger:{
-  //     trigger : ".fond",
-  //     start: "top 70%",
-  //   }
-  // })
-  
-  gsap.utils.toArray(".game img").forEach((img, index) => {
-    gsap.from(img, {
-      opacity: 0,
-      y: 100,
-      scrollTrigger: {
-        trigger: "#game",
-        start: "top center+=100",
-        end: "bottom center",
-        scrub: true,
-        markers: true,
-        toggleActions: "play none none reverse",
-        onToggle: self => {
-          if (self.isActive) {
-            gsap.to(img, {opacity: 1, y: 0});
-          }
-        }
-      }
+  const prevBtn = document.querySelector(".up");
+  const nextBtn = document.querySelector(".down");
+  const sliderContainer = document.querySelector(".sliderContainer");
+  const dotsContainer = document.getElementById('dots');
+
+  let currentSlideIndex = 0;
+
+  prevBtn.addEventListener("click", () => {
+    if (currentSlideIndex > 0) {
+      currentSlideIndex--;
+      goToSlide(currentSlideIndex);
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentSlideIndex < sliderContainer.children.length - 1) {
+      currentSlideIndex++;
+      goToSlide(currentSlideIndex);
+    }
+  });
+
+  for (let i = 0; i < sliderContainer.children.length; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.setAttribute('data-index', i);
+    dotsContainer.appendChild(dot);
+
+    if (i === 0) {
+      dot.classList.add('active');
+    }
+  }
+
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      goToSlide(index);
     });
   });
 
-  // gsap
-  // .timeline({
-  //   scrollTrigger: {
-  //     trigger: "#game",
-  //     scrub: 0.5,
-  //     pin: true,
-  //     start: "top top",
-  //     end: "+=100%"
-  //   }
-  // })
-  
-  // // Epinglage du fond
-  // .from(".player", {
-  //   x:"-=300",
-  //   ease: "power1.inOut",
-  // });
-
+  function goToSlide(index) {
+    sliderContainer.style.transform = `translateY(-${index * 100}vh)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+    prevBtn.disabled = currentSlideIndex === 0;
+    nextBtn.disabled = currentSlideIndex === sliderContainer.children.length - 1;
+  }
 });

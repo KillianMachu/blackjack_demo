@@ -1,13 +1,5 @@
+@import 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-$background-color: #161616;
-$lightGreen: #1d6b3f;
-$darkGreen: #103320;
-$checkbox-size: 16px;
-$borderCheckbox: #ccc;
-$checkColor: #DDD;
-$checkFail: #ff6a6a;
-$windowColor: #333333;
-$yellow: #e9da54;
 
 html {
     scroll-behavior: smooth;
@@ -33,7 +25,7 @@ body {
 
         #machine {
             position: fixed;
-            z-index: 2;
+            z-index: 20;
             height: 100vh;
             width: 100vw;
             display: flex;
@@ -323,7 +315,7 @@ body {
                         transition: all .5s ease-in-out;
                         background-color: white;
                     }
-                    
+
                     .bar {
                         display: block;
                         width: 45px;
@@ -333,18 +325,18 @@ body {
                         margin-left: 0;
                         background-color: white;
                     }
-    
+
                     .bar::before {
                         transform: translateY(-12px);
                     }
-    
+
                     .bar::after {
                         transform: translateY(12px);
                     }
                 }
 
-                &.show-nav{
-                    nav{
+                &.show-nav {
+                    nav {
                         display: flex;
                         flex-direction: column;
                         background-color: #161616;
@@ -353,16 +345,16 @@ body {
                         z-index: 10;
                     }
 
-                    .burger{
+                    .burger {
 
                         .bar::before {
                             transform: rotate(45deg);
                         }
-        
+
                         .bar::after {
                             transform: rotate(-45deg);
                         }
-        
+
                         .bar {
                             width: 0;
                             margin-left: 50%;
@@ -380,15 +372,15 @@ body {
                         display: none;
                         position: absolute;
                         justify-content: inherit;
-                        
-                        span{
+
+                        span {
                             height: fit-content;
 
-                            &:first-child{
+                            &:first-child {
                                 margin-top: 3em;
                             }
 
-                            a{
+                            a {
                                 margin: 1em auto;
                             }
                         }
@@ -611,9 +603,9 @@ body {
         // .cards{
         //     min-height: 100vh;
         //     background-color: #333333;
-            
+
         // }
-        
+
         // .card-click {
         //     width: fit-content;
         //     height: fit-content;
@@ -646,18 +638,91 @@ body {
         //     }
         // }
 
-        #game {
+        #gameSection {
             height: 100vh;
+            overflow-y: hidden;
             position: relative;
 
-            .fond{
-                height: 100vh;
-                width: 100vw;
+            .utils {
+                height: 40%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 13;
+                display: flex;
+                flex-direction: column;
+                width: fit-content;
+                align-items: center;
+                right: 5%;
+                justify-content: space-between;
+
+                .up,
+                .down {
+                    width: 1em;
+                    height: 1em;
+                    font-size: 4em;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    cursor: pointer;
+                    border-radius: 1em;
+                    border: none;
+                    background-color: $background-color;
+                    color: white;
+
+                    &:disabled {
+                        cursor: not-allowed;
+                        background-color: rgba($background-color, .4);
+                        color: rgba(white, .4);
+                    }
+                }
+
+                #dots {
+                    display: flex;
+                    flex-direction: column;
+                    width: fit-content;
+                    align-items: center;
+
+                    .dot {
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                        background-color: white;
+                        border-radius: 50%;
+                        margin: .3em 0;
+                        cursor: pointer;
+
+                        &.active {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+
+            .sliderContainer {
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.5s ease;
+            }
+        }
+
+        .game {
+            height: 100vh;
+            position: relative;
+            width: 100%;
+
+            .fond {
+                height: 100%;
+                width: 100%;
                 background: $lightGreen;
                 /* For older browsers that may not support gradients */
                 background: -webkit-radial-gradient(center, ellipse cover, $lightGreen 0%, $darkGreen 100%);
                 background: radial-gradient($lightGreen, $darkGreen);
-                
+                position: absolute;
+                top: 0;
+                z-index: 1;
+
                 .grainy {
                     width: 100%;
                     height: 100%;
@@ -665,33 +730,47 @@ body {
                 }
             }
 
-            .player{
+            .player,
+            .dealer {
                 position: absolute;
-                transform: translate(-50%, -100%);
-                top: 90%;
                 left: 50%;
                 display: flex;
                 width: 100%;
+                z-index: 2;
 
-                >div{
+                >div {
                     margin: 0 auto;
-                    width: 30%;
                     display: flex;
-                    justify-content: space-between;
-                }
+                    justify-content: center;
+                    width: 90%;
 
-                @media screen and (max-width: 1150px) {
-                    .card{
-                        width: 90%;
+                    .card {
+                        margin: 0 1em;
+                        max-width: 100%;
+                        max-height: 18em;
                     }
-                }
-
-                .card{
-                    width: 30%;
                 }
             }
 
+            .player {
+                transform: translate(-50%, -100%);
+                top: 95%;
+            }
+
+            .dealer {
+                transform: translateX(-50%);
+                top: 20%;
+            }
+
+
+            .title {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                color: white;
+            }
         }
+
     }
 
 }

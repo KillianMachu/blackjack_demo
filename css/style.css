@@ -20,7 +20,7 @@ body .container {
 }
 body .container #machine {
   position: fixed;
-  z-index: 2;
+  z-index: 20;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -492,44 +492,123 @@ body .container .head .mouse-icon .arrow.arrow-03 {
     opacity: 0;
   }
 }
-body .container #game {
+body .container #gameSection {
   height: 100vh;
+  overflow-y: hidden;
   position: relative;
 }
-body .container #game .fond {
+body .container #gameSection .utils {
+  height: 40%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 13;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  right: 5%;
+  justify-content: space-between;
+}
+body .container #gameSection .utils .up,
+body .container #gameSection .utils .down {
+  width: 1em;
+  height: 1em;
+  font-size: 4em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 1em;
+  border: none;
+  background-color: #161616;
+  color: white;
+}
+body .container #gameSection .utils .up:disabled,
+body .container #gameSection .utils .down:disabled {
+  cursor: not-allowed;
+  background-color: rgba(22, 22, 22, 0.4);
+  color: rgba(255, 255, 255, 0.4);
+}
+body .container #gameSection .utils #dots {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+}
+body .container #gameSection .utils #dots .dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0.3em 0;
+  cursor: pointer;
+}
+body .container #gameSection .utils #dots .dot.active {
+  width: 25px;
+  height: 25px;
+}
+body .container #gameSection .sliderContainer {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+}
+body .container .game {
   height: 100vh;
-  width: 100vw;
+  position: relative;
+  width: 100%;
+}
+body .container .game .fond {
+  height: 100%;
+  width: 100%;
   background: #1d6b3f;
   /* For older browsers that may not support gradients */
   background: -webkit-radial-gradient(center, ellipse cover, #1d6b3f 0%, #103320 100%);
   background: radial-gradient(#1d6b3f, #103320);
+  position: absolute;
+  top: 0;
+  z-index: 1;
 }
-body .container #game .fond .grainy {
+body .container .game .fond .grainy {
   width: 100%;
   height: 100%;
   background: url("../img/grainy.png");
 }
-body .container #game .player {
+body .container .game .player,
+body .container .game .dealer {
   position: absolute;
-  transform: translate(-50%, -100%);
-  top: 90%;
   left: 50%;
   display: flex;
   width: 100%;
+  z-index: 2;
 }
-body .container #game .player > div {
+body .container .game .player > div,
+body .container .game .dealer > div {
   margin: 0 auto;
-  width: 30%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 90%;
 }
-@media screen and (max-width: 1150px) {
-  body .container #game .player .card {
-    width: 90%;
-  }
+body .container .game .player > div .card,
+body .container .game .dealer > div .card {
+  margin: 0 1em;
+  max-width: 100%;
+  max-height: 18em;
 }
-body .container #game .player .card {
-  width: 30%;
+body .container .game .player {
+  transform: translate(-50%, -100%);
+  top: 95%;
+}
+body .container .game .dealer {
+  transform: translateX(-50%);
+  top: 20%;
+}
+body .container .game .title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
 }
 
 .token {
