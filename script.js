@@ -227,24 +227,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }, .5)
 
     function flipCard() {
-      document.querySelector('.card-click').classList.toggle(`flipped`)
+      setTimeout(() => {
+        document.querySelector('.card-click').classList.add(`flipped`)
+      }, 500);
     }
 
     let game2 = gsap.timeline({paused: true})
-    game2.call(flipCard)
+    game2.from(".game:nth-child(3)>.dealer>div.card:nth-child(2)",{
+      x:0
+    })
+    .call(flipCard)
 
     const games = [game0, game1, game2]
 
     function cardsAnim(){
       if(currentSlideIndex < games.length){
-        if(currentSlideIndex == 2){
-          setTimeout(() => {
-            games[currentSlideIndex].restart();
-          }, .5);
-        }
-        else{
-          games[currentSlideIndex].restart();
-        }
+        games[currentSlideIndex].restart();
       }
     }
 
@@ -275,6 +273,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
       currentSlideIndex--;
       goToSlide(currentSlideIndex);
       cardsAnim()
+      if(currentSlideIndex+1 == 2){
+        document.querySelector('.card-click').classList.remove(`flipped`)
+      }
     }
   });
 
