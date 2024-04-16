@@ -492,6 +492,25 @@ body .container .head .mouse-icon .arrow.arrow-03 {
     opacity: 0;
   }
 }
+body .container .card-click {
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body .container .card-click.flipped {
+  transform: rotateY(180deg);
+}
+body .container .card-click img {
+  backface-visibility: hidden;
+  display: flex;
+}
+body .container .card-click img:first-child {
+  position: relative;
+}
+body .container .card-click img:last-child {
+  position: absolute;
+  transform: rotateY(180deg);
+  top: 0;
+}
 body .container #gameSection {
   height: 100vh;
   overflow-y: hidden;

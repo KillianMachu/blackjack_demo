@@ -203,6 +203,53 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ease: Power1.easeInOut, clearProps: 'all'
     })
 
+    // game anims
+
+    let game0 = gsap.timeline({paused: true})
+    game0.from(".game:nth-child(1)>.dealer>div>img",{
+      y: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all',
+      stagger: .5,
+    }, .5)
+    .from(".game:nth-child(1)>.player>div>img",{
+      y: 100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all',
+      stagger: .5,
+    })
+
+    let game1 = gsap.timeline({paused: true})
+    game1.from(".game:nth-child(2)>.player>div>img:nth-child(3)",{
+      y: 100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all'
+    }, .5)
+
+    function flipCard() {
+      document.querySelector('.card-click').classList.toggle(`flipped`)
+    }
+
+    let game2 = gsap.timeline({paused: true})
+    game2.call(flipCard)
+
+    const games = [game0, game1, game2]
+
+    function cardsAnim(){
+      if(currentSlideIndex < games.length){
+        if(currentSlideIndex == 2){
+          setTimeout(() => {
+            games[currentSlideIndex].restart();
+          }, .5);
+        }
+        else{
+          games[currentSlideIndex].restart();
+        }
+      }
+    }
+
+    // game section appear
+
   gsap.from("#gameSection",{
     scrollTrigger: {
       trigger: "#gameSection",
@@ -210,7 +257,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     },
     x: -100,
     autoAlpha: 0,
-    ease: Power1.easeInOut, clearProps: 'all'
+    ease: Power1.easeInOut, clearProps: 'all',
+    onComplete: function (){
+      game0.play()
+    }
   })
 
   const prevBtn = document.querySelector(".up");
@@ -224,6 +274,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (currentSlideIndex > 0) {
       currentSlideIndex--;
       goToSlide(currentSlideIndex);
+      cardsAnim()
     }
   });
 
@@ -231,6 +282,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (currentSlideIndex < sliderContainer.children.length - 1) {
       currentSlideIndex++;
       goToSlide(currentSlideIndex);
+      cardsAnim()
     }
   });
 
