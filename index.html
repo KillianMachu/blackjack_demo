@@ -728,7 +728,8 @@
                     </div>
                     <h2>Remarque :</h2>
                     <p>Si vous obtenez un as et une carte d'une valeur de 10 ave les 2 premières cartes, il s'agit d'un
-                        <strong>Blackjack</strong> et vous êtes payés 1,5 fois votre mise.</p>
+                        <strong>Blackjack</strong> et vous êtes payés 1,5 fois votre mise.
+                    </p>
                     <a href="https://www.casino-neuchatel.ch/app/uploads/Regles-de-base-du-Black-Jack_F.pdf"
                         target="_blank" aria-label="en savoir plus">En savoir +</a>
                 </div>
@@ -750,23 +751,51 @@
             </a>
         </section>
 
+        <section class="wrapper" id="js-wrappers">
+            <h1>Valeurs des cartes</h1>
+            <div class="sections" id="js-slideContainers">
+                <section class="section">
+                    <img src="img/Cards/front/clubs_2.svg" alt="une carte entre la valeur 2 et 10">
+                    <span class="section__title" id="title1"><b>Les cartes de 2 à 10</b></span>
+                        <p class="content-card">Les cartes de 2 à 10
+                            gardent leur valeur initiale</p>
+                    <span id="trigger--title1" aria-hidden="true"></span>
+                </section>
+                <section class="section color2">
+                    <img src="img/Cards/front/clubs_king.svg" alt="une figure d'un jeu de cartes">
+                    <span class="section__title" id="title2"><b>Les figures</b></span>
+                        <p class="content-card">Les figures ont une valeur de
+                            10 points</p>
+                    <span id="trigger--title2" aria-hidden="true"></span>
+                </section>
+                <section class="section">
+                    <img src="img/Cards/front/clubs_ace.svg" alt="la carte as">
+                    <span class="section__title" id="title3"><b>L'as</b></span>
+                    <p class="content-card">L'as est un peu spécifique, il avantage
+                        le joueur, il vaudra 11 si la somme totale est inférieure ou égale à 21 sinon il vaudra 1</p>
+                    <span id="trigger--title3" aria-hidden="true"> </span>
+                </section>
+
+            </div>
+        </section>
+
         <section id="gameSection">
             <div class="utils">
-                <button class="up" disabled>
-                    <i class='bx bx-chevron-up'></i>
+                <button class="up" aria-label="monter" disabled>
+                    <i class='bx bx-chevron-up' aria-hidden="true"></i>
                 </button>
-                <div id="dots"></div>
-                <button class="down">
-                    <i class='bx bx-chevron-down'></i>
+                <div id="dots" aria-hidden="true"></div>
+                <button class="down" aria-label="descendre">
+                    <i class='bx bx-chevron-down' aria-hidden="true"></i>
                 </button>
             </div>
             <div class="sliderContainer">
                 <div class="game">
-                    <div class="fond">
-                        <div class="grainy">
+                    <div class="fond" aria-hidden="true">
+                        <div class="grainy" aria-hidden="true">
                         </div>
                     </div>
-                    <h1 class="title">1. Distribution des cartes</h1>
+                    <h1 class="title"><span aria-label="étape 1">1.</span> Distribution des cartes</h1>
                     <div class="dealer">
                         <div>
                             <img class="card" src="img/Cards/front/clubs_king.svg" alt="roi de trèfle">
@@ -774,8 +803,8 @@
                         </div>
                     </div>
                     <div class="scores">
-                        <h3 class="score score-dealer">Score : 10</h3>
-                        <h3 class="score score-player">Score : 14</h3>
+                        <h3 class="score score-dealer" aria-label="score du croupier à 10">Score : 10</h3>
+                        <h3 class="score score-player" aria-label="score du joueur à 14">Score : 14</h3>
                     </div>
                     <div class="player">
                         <div>
@@ -785,11 +814,11 @@
                     </div>
                 </div>
                 <div class="game">
-                    <div class="fond">
-                        <div class="grainy">
+                    <div class="fond" aria-hidden="true">
+                        <div class="grainy" aria-hidden="true">
                         </div>
                     </div>
-                    <h1 class="title">2. Le joueur reprend une carte</h1>
+                    <h1 class="title"><span aria-label="étape 2">2.</span> Le joueur reprend une carte</h1>
                     <p class="title">Le score précédent étant de 14, le joueur tente de reprendre une carte au risque de
                         perdre sa mise</p>
                     <div class="dealer">
@@ -799,8 +828,8 @@
                         </div>
                     </div>
                     <div class="scores">
-                        <h3 class="score score-dealer">Score : 10</h3>
-                        <h3 class="score score-player">Score : 21</h3>
+                        <h3 class="score score-dealer" aria-label="score du croupier à 10">Score : 10</h3>
+                        <h3 class="score score-player" aria-label="score du joueur à 21">Score : 21</h3>
                     </div>
                     <div class="player">
                         <div>
@@ -811,11 +840,11 @@
                     </div>
                 </div>
                 <div class="game">
-                    <div class="fond">
-                        <div class="grainy">
+                    <div class="fond" aria-hidden="true">
+                        <div class="grainy" aria-hidden="true">
                         </div>
                     </div>
-                    <h1 class="title">3. Le croupier révèle sa carte</h1>
+                    <h1 class="title"><span aria-label="étape 3">3.</span> Le croupier révèle sa carte</h1>
                     <p class="title">Le score précédent étant de 21, le joueur s'arrête car il a atteint le nombre
                         maximal, le croupier obtiens un résultat inférieur.</p>
                     <p class="title">Le joueur remporte donc la partie</p>
@@ -829,8 +858,8 @@
                         </div>
                     </div>
                     <div class="scores">
-                        <h3 class="score score-dealer">Score : 19</h3>
-                        <h3 class="score score-player">Score : 21</h3>
+                        <h3 class="score score-dealer" aria-label="score du croupier à 19">Score : 19</h3>
+                        <h3 class="score score-player" aria-label="score du joueur à 21">Score : 21</h3>
                     </div>
                     <div class="player">
                         <div>
@@ -842,29 +871,6 @@
                 </div>
             </div>
         </section>
-        <div class="wrapper" id="js-wrappers">
-            <div class="sections" id="js-slideContainers">
-                <section class="section">
-                    <img src="img/Cards/front/clubs_2.svg" alt="une carte entre la valeur 2 et 10">
-                    <span class="section__title" id="title1"><b>les cartes de 2 à 10 </b> <br><br>les cartes de 2 à 10
-                        gardent leur valeur initiale</span>
-                    <span id="trigger--title1"></span>
-                </section>
-                <section class="section color2">
-                    <img src="img/Cards/front/clubs_king.svg" alt="une figure d'un jeux de cartes">
-                    <span class="section__title" id="title2"><b> Les figures <br> <br></b>les figures ont une valeur de
-                        10 points</span>
-                    <span id="trigger--title2"></span>
-                </section>
-                <section class="section">
-                    <img src="img/Cards/front/clubs_ace.svg" alt="la carte as">
-                    <span class="section__title" id="title3"><b>l'as</b><br><br>l'as est un peu spécifique il avantage
-                        le joueur sila somme de ses cartes vaut plus de 21 l'as vaudra 1 sinon il vaut 11 </span>
-                    <span id="trigger--title3"> </span>
-                </section>
-
-            </div>
-        </div>
         <!-- <div class="endsection">
             <div class="footer">
             <figure><img src="../blackjack_demo/img/Cards/back/red.svg" alt="carte retourner" class="card1""></figure>

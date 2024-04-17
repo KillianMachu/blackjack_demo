@@ -25,21 +25,21 @@ $(function () { // wait for document ready
     
   });
 
-  "use strict";   
-  gsap.registerPlugin(ScrollTrigger);
-  jQuery(document).ready(function($){
-    let tl = gsap.timeline({pause:true,});
-    tl.to(".endsection figure img",{
-      rotationY: 180,
-    }).pause();
+  // "use strict";   
+  // gsap.registerPlugin(ScrollTrigger);
+  // jQuery(document).ready(function($){
+  //   let tl = gsap.timeline({pause:true,});
+  //   tl.to(".endsection figure img",{
+  //     rotationY: 180,
+  //   }).pause();
     
-    ScrollTrigger.create({
-       trigger: ".endsection",
-       // pin:true,
+  //   ScrollTrigger.create({
+  //      trigger: ".endsection",
+  //      // pin:true,
    
-      animation: tl,
-      scrub:1.5,
+  //     animation: tl,
+  //     scrub:1.5,
       
-    })
+  //   })
     
-  });
+  // });

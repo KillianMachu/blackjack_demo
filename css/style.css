@@ -623,7 +623,8 @@ body .container .game .dealer {
   transform: translateX(-50%);
   top: 20%;
 }
-body .container .game .score-dealer, body .container .game .score-player {
+body .container .game .score-dealer,
+body .container .game .score-player {
   position: absolute;
   left: 50%;
   display: flex;
@@ -639,6 +640,9 @@ body .container .game .score-player {
   transform: translate(-50%, -100%);
   top: 60%;
 }
+body .container .game > h1 {
+  color: #e9da54;
+}
 body .container .game .title {
   position: relative;
   z-index: 1;
@@ -653,26 +657,33 @@ body .container .scrollmagic-pin-spacer .wrapper {
   overflow: hidden;
   -webkit-perspective: 1000;
   perspective: 1000;
-  padding-top: 60px;
+}
+body .container .scrollmagic-pin-spacer .wrapper > h1 {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #e9da54;
+  font-size: 2em;
 }
 body .container .scrollmagic-pin-spacer .wrapper .sections {
   width: 500%;
   height: 100%;
 }
 body .container .scrollmagic-pin-spacer .wrapper .sections .color2 {
-  background: rgb(10, 92, 10);
+  background: #1b5133;
 }
 body .container .scrollmagic-pin-spacer .wrapper .sections .section {
-  height: 100%;
+  height: 100vh;
   width: 20%;
   float: left;
   position: relative;
   text-align: center;
 }
-body .container .scrollmagic-pin-spacer .wrapper .sections .section .section:nth-child(1) {
-  background: #161616;
+body .container .scrollmagic-pin-spacer .wrapper .sections .section > img {
+  margin-top: 6em;
 }
-body .container .scrollmagic-pin-spacer .wrapper .sections .section__title {
+body .container .scrollmagic-pin-spacer .wrapper .sections .section .section__title {
   position: absolute;
   top: 70%;
   left: 50%;
@@ -680,6 +691,15 @@ body .container .scrollmagic-pin-spacer .wrapper .sections .section__title {
   transform: translate(-50%, -50%);
   font-size: 30px;
   color: #fff;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections .section .content-card {
+  font-size: 1.2em;
+  color: white;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .token {
