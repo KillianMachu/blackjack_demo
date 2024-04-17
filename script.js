@@ -218,6 +218,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ease: Power1.easeInOut, clearProps: 'all',
       stagger: .5,
     })
+    .from(".game:nth-child(1)>.scores>.score",{
+      x: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all',
+      stagger: .5,
+    })
 
     let game1 = gsap.timeline({paused: true})
     game1.from(".game:nth-child(2)>.player>div>img:nth-child(3)",{
@@ -225,6 +231,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
       autoAlpha: 0,
       ease: Power1.easeInOut, clearProps: 'all'
     }, .5)
+    .from(".game:nth-child(2)>.scores>.score",{
+      x: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all',
+      stagger: .5,
+    })
 
     function flipCard() {
       setTimeout(() => {
@@ -233,10 +245,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     let game2 = gsap.timeline({paused: true})
-    game2.from(".game:nth-child(3)>.dealer>div.card:nth-child(2)",{
-      x:0
-    })
-    .call(flipCard)
+    game2.call(flipCard)
+    .from(".game:nth-child(3)>.scores>.score",{
+      x: -100,
+      autoAlpha: 0,
+      ease: Power1.easeInOut, clearProps: 'all',
+      stagger: .5,
+    },.7)
 
     const games = [game0, game1, game2]
 
