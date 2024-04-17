@@ -314,3 +314,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     nextBtn.disabled = currentSlideIndex === sliderContainer.children.length - 1;
   }
 });
+
+
+  
+  

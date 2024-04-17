@@ -629,6 +629,40 @@ body .container .game .title {
   text-align: center;
   color: white;
 }
+body .container .scrollmagic-pin-spacer .wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  padding-top: 60px;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections {
+  width: 500%;
+  height: 100%;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections .section {
+  height: 100%;
+  width: 20%;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections .section .section:nth-child(1) {
+  background: #161616;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections .section .color2 {
+  background: green;
+}
+body .container .scrollmagic-pin-spacer .wrapper .sections .section__title {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #fff;
+}
 
 .token {
   width: 60px;
