@@ -752,15 +752,35 @@ body {
                     }
                 }
             }
-
+            
+            
             .player {
                 transform: translate(-50%, -100%);
                 top: 95%;
             }
-
+            
             .dealer {
                 transform: translateX(-50%);
                 top: 20%;
+            }
+            
+            .score-dealer, .score-player{
+                position: absolute;
+                left: 50%;
+                display: flex;
+                z-index: 2;
+                color: white;
+                font-size: 1.2em;
+            }
+
+            .score-dealer{
+                transform: translateX(-50%);
+                top: 50%;
+            }
+
+            .score-player{
+                transform: translate(-50%, -100%);
+                top: 60%;
             }
 
 
@@ -769,6 +789,8 @@ body {
                 z-index: 1;
                 text-align: center;
                 color: white;
+                width: 90%;
+                margin: 1em auto
             }
         }
         .scrollmagic-pin-spacer{
@@ -784,7 +806,9 @@ body {
             .sections {
                 width: 500%;
                 height: 100%;
-
+                .color2{
+                    background: rgb(10, 92, 10);
+                }
 
                 .section {
                     height: 100%;
@@ -798,9 +822,7 @@ body {
                         background: #161616;
                       }
 
-                      .color2{
-                        background: green;
-                      }
+                      
                  
                       }
                       .section__title {
@@ -818,6 +840,43 @@ body {
               }
       
           }
+
+        // .contact{
+        //     height: 100vh;
+
+        //     .contact-card-click {
+        //         width: fit-content;
+        //         height: fit-content;
+        //         position: absolute;
+        //         transform-style: preserve-3d;
+        //         transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        //         cursor: pointer;
+        //         left: 50%;
+        //         top: 50%;
+        //         transform: translate(-50%, -50%);
+        //         position: relative;
+    
+        //         &.flipped {
+        //             // transform: translate(-50%, -50%) rotateY(180deg);
+        //             transform: rotateY(180deg);
+        //         }
+    
+        //         img {
+        //             backface-visibility: hidden;
+        //             display: flex;
+    
+        //             &:first-child {
+        //                 position: relative;
+        //             }
+    
+        //             &:last-child {
+        //                 position: absolute;
+        //                 transform: rotateY(180deg);
+        //                 top: 0;
+        //             }
+        //         }
+        //     }
+        // }
 
     }
 

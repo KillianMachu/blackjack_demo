@@ -623,11 +623,29 @@ body .container .game .dealer {
   transform: translateX(-50%);
   top: 20%;
 }
+body .container .game .score-dealer, body .container .game .score-player {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  z-index: 2;
+  color: white;
+  font-size: 1.2em;
+}
+body .container .game .score-dealer {
+  transform: translateX(-50%);
+  top: 50%;
+}
+body .container .game .score-player {
+  transform: translate(-50%, -100%);
+  top: 60%;
+}
 body .container .game .title {
   position: relative;
   z-index: 1;
   text-align: center;
   color: white;
+  width: 90%;
+  margin: 1em auto;
 }
 body .container .scrollmagic-pin-spacer .wrapper {
   width: 100%;
@@ -641,6 +659,9 @@ body .container .scrollmagic-pin-spacer .wrapper .sections {
   width: 500%;
   height: 100%;
 }
+body .container .scrollmagic-pin-spacer .wrapper .sections .color2 {
+  background: rgb(10, 92, 10);
+}
 body .container .scrollmagic-pin-spacer .wrapper .sections .section {
   height: 100%;
   width: 20%;
@@ -650,9 +671,6 @@ body .container .scrollmagic-pin-spacer .wrapper .sections .section {
 }
 body .container .scrollmagic-pin-spacer .wrapper .sections .section .section:nth-child(1) {
   background: #161616;
-}
-body .container .scrollmagic-pin-spacer .wrapper .sections .section .color2 {
-  background: green;
 }
 body .container .scrollmagic-pin-spacer .wrapper .sections .section__title {
   position: absolute;
